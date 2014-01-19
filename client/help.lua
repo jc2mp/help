@@ -69,8 +69,6 @@ function Help:AddItem( args )
 
 	local page = tab_button:GetPage()
 
-	args.text = args.text:gsub( "%[colour=.-%]", "" )
-
 	local scroll_control = ScrollControl.Create( page )
 	scroll_control:SetDock( GwenPosition.Fill )
 	scroll_control:SetMargin( Vector2( 4, 4 ), Vector2( 4, 4 ) )

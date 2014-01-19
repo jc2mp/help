@@ -27,9 +27,6 @@ function Help:__init()
 	self.window:Subscribe( "WindowClosed", self, 
 		self.WindowClosed )
 
-	Events:Register( "HelpAddItem" )
-	Events:Register( "HelpRemoveItem" )
-
 	Events:Subscribe( "HelpAddItem", self, 
 		self.AddItem )
 

@@ -70,12 +70,21 @@ function Help:AddItem( args )
 	local page = tab_button:GetPage()
 
 	local scroll_control = ScrollControl.Create( page )
-	scroll_control:SetDock( GwenPosition.Fill )
 	scroll_control:SetMargin( Vector2( 4, 4 ), Vector2( 4, 4 ) )
+	scroll_control:SetScroll( false, true )
+	scroll_control:SetDock( GwenPosition.Fill )
 
-	local contents = Label.Create( scroll_control )
-	contents:SetText( args.text )
-	contents:SizeToContents()
+	local label = Label.Create( scroll_control )
+	-- Ugly hack to make the text not render under the scrollbar.
+	label:SetPadding( Vector2( 0, 0 ), Vector2( 14, 0 ) )
+	label:SetText( args.text )
+	label:SetWrap( true )
+	
+	-- Ugly hack to get word wrapping with ScrollControl working decently.
+	label:Subscribe( "Render" , function(label)
+		label:SetWidth( label:GetParent():GetWidth() )
+		label:SizeToContents()
+	end)
 
 	self.tabs[args.name] = tab_button
 end

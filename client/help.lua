@@ -71,7 +71,7 @@ function Help:AddItem( args )
 
 	local scroll_control = ScrollControl.Create( page )
 	scroll_control:SetMargin( Vector2( 4, 4 ), Vector2( 4, 4 ) )
-	scroll_control:SetScroll( false, true )
+	scroll_control:SetScrollable( false, true )
 	scroll_control:SetDock( GwenPosition.Fill )
 
 	local label = Label.Create( scroll_control )
